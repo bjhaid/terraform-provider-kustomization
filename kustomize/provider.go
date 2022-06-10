@@ -82,7 +82,7 @@ func Provider() *schema.Provider {
 		incluster := d.Get("kubeconfig_incluster").(bool)
 		kubeContext := d.Get("context").(string)
 
-		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, incluster, 120)
+		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, incluster)
 
 		if k == nil || err != nil {
 			return nil, fmt.Errorf("provider kustomization: %s", err)

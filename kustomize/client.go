@@ -21,7 +21,7 @@ type KubeClient struct {
 	Mapper *restmapper.DeferredDiscoveryRESTMapper
 }
 
-func initializeClient(raw, path, kubecontext string, incluster bool, qps float32) (*KubeClient, error) {
+func initializeClient(raw, path, kubecontext string, incluster bool) (*KubeClient, error) {
 	var config *rest.Config
 	var err error
 
@@ -59,8 +59,8 @@ func initializeClient(raw, path, kubecontext string, incluster bool, qps float32
 	}
 
 	// Increase QPS and Burst rate limits
-	config.QPS = qps
-	config.Burst = int(qps * 2)
+	config.QPS = 120
+	config.Burst = 240
 
 	client, err := dynamic.NewForConfig(config)
 	if err != nil {

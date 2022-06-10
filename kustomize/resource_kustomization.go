@@ -65,7 +65,7 @@ func kustomizationResourceCreate(d *schema.ResourceData, m interface{}) error {
 	mapper := m.(*Config).Mapper
 
 	if kubeconfigPath != "" || kubeconfigRaw != "" || kubeContext != "" {
-		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false, 1)
+		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false)
 
 		if k == nil || err != nil {
 			return fmt.Errorf("provider kustomization: %s", err)
@@ -217,7 +217,7 @@ func kustomizationResourceRead(d *schema.ResourceData, m interface{}) error {
 	mapper := m.(*Config).Mapper
 
 	if kubeconfigPath != "" || kubeconfigRaw != "" || kubeContext != "" {
-		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false, 1)
+		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false)
 
 		if k == nil || err != nil {
 			return fmt.Errorf("provider kustomization: %s", err)
@@ -241,7 +241,7 @@ func kustomizationResourceDiff(ctx context.Context, d *schema.ResourceDiff, m in
 	mapper := m.(*Config).Mapper
 
 	if kubeconfigPath != "" || kubeconfigRaw != "" || kubeContext != "" {
-		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false, 1)
+		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false)
 
 		if k == nil || err != nil {
 			return fmt.Errorf("provider kustomization: %s", err)
@@ -361,7 +361,7 @@ func kustomizationResourceExists(d *schema.ResourceData, m interface{}) (bool, e
 	mapper := m.(*Config).Mapper
 
 	if kubeconfigPath != "" || kubeconfigRaw != "" || kubeContext != "" {
-		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false, 1)
+		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false)
 
 		if k == nil || err != nil {
 			return false, fmt.Errorf("provider kustomization: %s", err)
@@ -413,7 +413,7 @@ func kustomizationResourceUpdate(d *schema.ResourceData, m interface{}) error {
 	mapper := m.(*Config).Mapper
 
 	if kubeconfigPath != "" || kubeconfigRaw != "" || kubeContext != "" {
-		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false, 1)
+		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false)
 
 		if k == nil || err != nil {
 			return fmt.Errorf("provider kustomization: %s", err)
@@ -503,7 +503,7 @@ func kustomizationResourceDelete(d *schema.ResourceData, m interface{}) error {
 	mapper := m.(*Config).Mapper
 
 	if kubeconfigPath != "" || kubeconfigRaw != "" || kubeContext != "" {
-		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false, 1)
+		k, err := initializeClient(kubeconfigRaw, kubeconfigPath, kubeContext, false)
 
 		if k == nil || err != nil {
 			return fmt.Errorf("provider kustomization: %s", err)
